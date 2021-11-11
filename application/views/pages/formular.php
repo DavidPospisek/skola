@@ -36,7 +36,7 @@
                     <a class="nav-link text-dark" href="seznam">Seznamu škol v ČR</a>
                     </button>
                     <button type="button" class="btn btn-blue btn-block">
-                    <a class="nav-link text-dark" href="pridavaniskol">Úpravy dat škol</a>
+                    <a class="nav-link text-dark" href="pridavaniskol">Úprava dat škol</a>
                     </button>
                     </div>
                 </div>
