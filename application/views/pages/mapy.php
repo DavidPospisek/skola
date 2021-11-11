@@ -10,20 +10,17 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
         <style>
             #map {
-                width: 110%;
-                height: 90vh;
-                border-style: solid;
+                width: 100%;
+                height: 80vh;
                 border-width: 3px;
             }
             
         </style>
-        
-    
     </head>
     <body style="background-color:lightblue;">
-        <div class="container">
+        
         <div class="text-center">
-          <h2><u><b>Mapa škol</b></u></h1>
+          <h2><b>Mapa škol</b></h1>
       </div>
         
         <div id="map"> 
@@ -33,6 +30,12 @@
         <div>
             <p></p>
         </div>
+        <center>
+            <div class="col-5">
+                <button type="button" class="btn btn-blue">
+                <a class="nav-link text-dark" href="formular">Zpět na menu</a>
+            </div> 
+            </center>
     </body>
 </html>
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -47,12 +50,9 @@ var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
     function onMapClick(e) {
       popup
-        .setLatLng(e.latlng)
-        .setContent("Klikli jste na souřadnice " + e.latlng.toString())
         .openOn(map);
       }
     map.on('click', onMapClick);
-
 var marker = L.marker([49.032687, 17.643536]).addTo(map);
 marker.bindPopup("<b>ZŠ Na Výsluní Uherský Brod</b>").closePopup();
 var marker1 = L.marker([49.022996, 17.649707]).addTo(map);
@@ -103,7 +103,6 @@ var marker23 = L.marker([49.118043, 17.422192]).addTo(map);
 marker23.bindPopup("<b>ZŠ Jalubí</b>").closePopup();
 var marker24 = L.marker([48.930711, 17.74298]).addTo(map);
 marker24.bindPopup("<b>ZŠ Březová</b>").closePopup();
-
         </script>
  
 

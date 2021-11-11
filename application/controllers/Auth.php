@@ -926,6 +926,16 @@ class Auth extends CI_Controller
                 $this->load->view('templates/hlavickaa', $data);                
 		$this->load->view('pages/seznam', $data);  
 		$this->load->view('templates/paticka');
+			}
+		}
+	 public function pridavaniskol()
+        {
+            if($this->ion_auth->logged_in()){
+                $this->load->model('skolamodel');
+                $data['polozky'] = $this->skolamodel->get_menu();
+                $this->load->view('templates/hlavickaa', $data);                
+		$this->load->view('pages/pridavaniskol', $data);  
+		$this->load->view('templates/paticka');
             }
         }  
         }  
