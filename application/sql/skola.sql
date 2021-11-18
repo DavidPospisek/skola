@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: 127.0.0.1
--- Vytvořeno: Čtv 07. říj 2021, 20:55
+-- Vytvořeno: Čtv 18. lis 2021, 20:01
 -- Verze serveru: 10.4.17-MariaDB
 -- Verze PHP: 8.0.6
 
@@ -53,30 +53,6 @@ CREATE TABLE `login_attempts` (
   `login` varchar(100) NOT NULL,
   `time` int(11) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Struktura tabulky `majitel`
---
-
-CREATE TABLE `majitel` (
-  `idmajitel` int(11) NOT NULL,
-  `jméno` varchar(45) DEFAULT NULL,
-  `příjmení` varchar(45) DEFAULT NULL,
-  `adresa` varchar(45) DEFAULT NULL,
-  `telefon` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Vypisuji data pro tabulku `majitel`
---
-
-INSERT INTO `majitel` (`idmajitel`, `jméno`, `příjmení`, `adresa`, `telefon`, `email`) VALUES
-(1, 'Ctibor', 'Tichopádek', 'Brumlovka 15, Praha 4', '999 999 999', 'CtiborTichopadek@seznam.cz'),
-(2, 'Martin', 'Fenin', 'Náměstí míru 88, Praha 10', '777 777 777', 'MartinFenin@seznam.cz'),
-(3, 'Šimon', 'Nejezchleba', 'Náplavka 48, Praha 6', '888 888 888', 'SimonNejezchleba@seznam.cz');
 
 -- --------------------------------------------------------
 
@@ -183,41 +159,6 @@ INSERT INTO `mesto` (`id`, `nazev`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabulky `nahradni_dily`
---
-
-CREATE TABLE `nahradni_dily` (
-  `id` int(11) NOT NULL,
-  `nazev_dilu` varchar(115) DEFAULT NULL,
-  `auto` varchar(75) DEFAULT NULL,
-  `cena` varchar(50) DEFAULT NULL,
-  `pocet_kusu_na_sklade` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Vypisuji data pro tabulku `nahradni_dily`
---
-
-INSERT INTO `nahradni_dily` (`id`, `nazev_dilu`, `auto`, `cena`, `pocet_kusu_na_sklade`) VALUES
-(1, 'Klika', 'Audi', '1 000Kč', '8'),
-(2, 'Brzdové destičky', 'Mercedes', '12 000Kč', '15'),
-(3, 'Žhavení', 'Škoda', '1000Kč', '1');
-
--- --------------------------------------------------------
-
---
--- Struktura tabulky `nahradni_dily_has_opravy`
---
-
-CREATE TABLE `nahradni_dily_has_opravy` (
-  `nahradni_dily_idnahradni_dily` int(11) NOT NULL,
-  `opravy_idopravy` int(11) NOT NULL,
-  `opravy_vozidlo_idvozidlo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Struktura tabulky `obor`
 --
 
@@ -233,45 +174,6 @@ CREATE TABLE `obor` (
 INSERT INTO `obor` (`id`, `nazev`) VALUES
 (2, 'IT'),
 (1, 'OA');
-
--- --------------------------------------------------------
-
---
--- Struktura tabulky `opravy`
---
-
-CREATE TABLE `opravy` (
-  `id` int(11) NOT NULL,
-  `datum` varchar(60) DEFAULT NULL,
-  `zamestnanec` varchar(60) DEFAULT NULL,
-  `popis_zavady` varchar(700) DEFAULT NULL,
-  `vymenene_soucastky` varchar(350) DEFAULT NULL,
-  `cas_opravy` varchar(60) DEFAULT NULL,
-  `naklady_na_opravu` varchar(60) DEFAULT NULL,
-  `naklady_za_cas` varchar(60) DEFAULT NULL,
-  `vozidlo_idvozidlo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Vypisuji data pro tabulku `opravy`
---
-
-INSERT INTO `opravy` (`id`, `datum`, `zamestnanec`, `popis_zavady`, `vymenene_soucastky`, `cas_opravy`, `naklady_na_opravu`, `naklady_za_cas`, `vozidlo_idvozidlo`) VALUES
-(1, '20.3. 2021', 'Libor Dlouhý', 'Nejde zatahovat okýnko', 'výměna kliky', '3 hodiny', '800Kč', '100Kč', 1),
-(2, '15.1.2021', 'Jiří Šmicer', 'Špatné brzdy', 'výměna brzdových destiček', '2 hodina', '300Kč', '100Kč', 2),
-(3, '7.3.2021', 'Karel Kročil', 'Špatné žhavení', 'výměna žhavení', '1 hodina', '250Kč', '100Kč', 3);
-
--- --------------------------------------------------------
-
---
--- Struktura tabulky `opravy_has_zamestnanci`
---
-
-CREATE TABLE `opravy_has_zamestnanci` (
-  `opravy_idopravy` int(11) NOT NULL,
-  `opravy_vozidlo_idvozidlo` int(11) NOT NULL,
-  `zamestnanci_idzamestnanci` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -487,7 +389,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$/4vNuD.i4sPEUNmzTMrlgOwnjvMQYcEm2EBeDErql2VNAA9J0tfnm', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1633632764, 1, 'Admin', 'istrator', 'ADMIN', '0');
+(1, '127.0.0.1', 'administrator', '$2y$12$/4vNuD.i4sPEUNmzTMrlgOwnjvMQYcEm2EBeDErql2VNAA9J0tfnm', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1637257853, 1, 'Admin', 'istrator', 'ADMIN', '0');
 
 -- --------------------------------------------------------
 
@@ -508,91 +410,6 @@ CREATE TABLE `users_groups` (
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (1, 1, 1),
 (2, 1, 2);
-
--- --------------------------------------------------------
-
---
--- Struktura tabulky `vozidlo`
---
-
-CREATE TABLE `vozidlo` (
-  `id` int(11) NOT NULL,
-  `reg_znacka` varchar(60) DEFAULT NULL,
-  `vyrobce` varchar(60) DEFAULT NULL,
-  `typ` varchar(75) DEFAULT NULL,
-  `rok_vyroby` varchar(45) DEFAULT NULL,
-  `barva` varchar(45) DEFAULT NULL,
-  `obsah_motoru` varchar(60) DEFAULT NULL,
-  `typ_prevodovky` varchar(60) DEFAULT NULL,
-  `majitel_idmajitel` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Vypisuji data pro tabulku `vozidlo`
---
-
-INSERT INTO `vozidlo` (`id`, `reg_znacka`, `vyrobce`, `typ`, `rok_vyroby`, `barva`, `obsah_motoru`, `typ_prevodovky`, `majitel_idmajitel`) VALUES
-(1, '5MM 8888', 'Audi', 'Sedan', '2015', 'Bílá', '2,0 kubíků', 'automat', 1),
-(2, '6E1 5555', 'Mercedes', 'Kombi', '2005', 'stříbrná', '2,0 kubíků', 'automat', 2),
-(3, '6B2 3333', 'Škoda', 'Kombi', '2015', 'modrá', '1,6 kubíků', 'automat', 3);
-
--- --------------------------------------------------------
-
---
--- Struktura tabulky `vozidlo_has_nahradni_dily`
---
-
-CREATE TABLE `vozidlo_has_nahradni_dily` (
-  `vozidlo_idvozidlo` int(11) NOT NULL,
-  `vozidlo_majitel_idmajitel` int(11) NOT NULL,
-  `nahradni_dily_idnahradni_dily` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Struktura tabulky `zakaznici`
---
-
-CREATE TABLE `zakaznici` (
-  `id` int(11) NOT NULL,
-  `jmeno` varchar(45) DEFAULT NULL,
-  `prijmeni` varchar(45) DEFAULT NULL,
-  `adresa` varchar(80) DEFAULT NULL,
-  `telefon` varchar(45) DEFAULT NULL,
-  `email` varchar(60) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Vypisuji data pro tabulku `zakaznici`
---
-
-INSERT INTO `zakaznici` (`id`, `jmeno`, `prijmeni`, `adresa`, `telefon`, `email`) VALUES
-(1, 'David', 'Trávníček', 'Brumlovka 15, Praha 4', '795 655 566', 'DavidTravnicek@seznam.cz'),
-(2, 'Tomáš', 'Svěcený', 'Náměstí míru 96, Praha 5', '789 454 484', 'TomasSveceny@seznam.cz'),
-(3, 'Libor', 'Podmol', 'Boršická 365, Praha 10', '185 454 545', 'PodmolLibor@seznam.cz');
-
--- --------------------------------------------------------
-
---
--- Struktura tabulky `zamestnanci`
---
-
-CREATE TABLE `zamestnanci` (
-  `id` int(11) NOT NULL,
-  `jmeno` varchar(45) DEFAULT NULL,
-  `prijmeni` varchar(45) DEFAULT NULL,
-  `osobni_cislo` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Vypisuji data pro tabulku `zamestnanci`
---
-
-INSERT INTO `zamestnanci` (`id`, `jmeno`, `prijmeni`, `osobni_cislo`) VALUES
-(1, 'Libor', 'Dlouhý', '1'),
-(2, 'Jíří', 'Šmicer', '2'),
-(3, 'Karel', 'Kročil', '3');
 
 -- --------------------------------------------------------
 
@@ -623,12 +440,6 @@ ALTER TABLE `login_attempts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Klíče pro tabulku `majitel`
---
-ALTER TABLE `majitel`
-  ADD PRIMARY KEY (`idmajitel`);
-
---
 -- Klíče pro tabulku `menu`
 --
 ALTER TABLE `menu`
@@ -642,35 +453,11 @@ ALTER TABLE `mesto`
   ADD KEY `nazev` (`nazev`);
 
 --
--- Klíče pro tabulku `nahradni_dily`
---
-ALTER TABLE `nahradni_dily`
-  ADD PRIMARY KEY (`id`);
-
---
--- Klíče pro tabulku `nahradni_dily_has_opravy`
---
-ALTER TABLE `nahradni_dily_has_opravy`
-  ADD PRIMARY KEY (`nahradni_dily_idnahradni_dily`,`opravy_idopravy`,`opravy_vozidlo_idvozidlo`);
-
---
 -- Klíče pro tabulku `obor`
 --
 ALTER TABLE `obor`
   ADD PRIMARY KEY (`id`),
   ADD KEY `nazev` (`nazev`);
-
---
--- Klíče pro tabulku `opravy`
---
-ALTER TABLE `opravy`
-  ADD PRIMARY KEY (`id`,`vozidlo_idvozidlo`);
-
---
--- Klíče pro tabulku `opravy_has_zamestnanci`
---
-ALTER TABLE `opravy_has_zamestnanci`
-  ADD PRIMARY KEY (`opravy_idopravy`,`opravy_vozidlo_idvozidlo`,`zamestnanci_idzamestnanci`);
 
 --
 -- Klíče pro tabulku `pocet_prijatych`

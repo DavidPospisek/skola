@@ -59,12 +59,10 @@
              <h2> Upravení dat Škol </h2>
          <form action="" method="POST">
              <input type="text" name="id" placeholder="Zadejte ID školy"/><br/>
-              <input type="text" name="datum" placeholder="Zadejte nový název Školy"/><br/>
-              <input type="text" name="zamestnanec" placeholder="Zadejte nové Město"/><br/>
-              <input type="text" name="popis_zavady" placeholder="Zadejte nové Geo-lat"/><br/>
-              <input type="text" name="vymenene_soucastky" placeholder="Zadejte nové Geo-long"/><br/>
-              <input type="text" name="cas_opravy" placeholder="Zadejte novou dobu opravy"/><br/>
-              
+              <input type="text" name="nazev" placeholder="Zadejte nový název Školy"/><br/>
+              <input type="text" name="mesto" placeholder="Zadejte nové Město"/><br/>
+              <input type="text" name="geolat" placeholder="Zadejte nové Geo-lat"/><br/>
+              <input type="text" name="geolong" placeholder="Zadejte nové Geo-long"/><br/>  
             <input type="submit" name="update" value="Klikněte pro upravení dat">
         </form>
     </center>
@@ -79,14 +77,42 @@
     <center>
         <h2> Přidání nové školy do databáze </h2>
            <form action="" method="POST">
-              <input type="text" name="datum" placeholder="Zadejte název školy"/><br/>
-              <input type="text" name="zamestnanec" placeholder="Zadejte město"/><br/>
-              <input type="text" name="popis_zavady" placeholder="Zadejte Geo-lat "/><br/>
-              <input type="text" name="vymenene_soucastky" placeholder="Zadejte Geo-long"/><br/>
+              <input type="text" name="nazev" placeholder="Zadejte název školy"/><br/>
+              <input type="text" name="mesto" placeholder="Zadejte město"/><br/>
+              <input type="text" name="geolat" placeholder="Zadejte Geo-lat "/><br/>
+              <input type="text" name="geolong" placeholder="Zadejte Geo-long"/><br/>
              <input type="submit" name="insert" value="Přidat data">
         </form>
     </center>
     </body>
 </html>
+<?php
+$connect = mysqli_connect("localhost","root","","skola");
+    if(isset($_POST['insert'])) {
+        
+        $nazev = $_POST['nazev'];
+        $mesto = $_POST['mesto'];
+        $geolat = $_POST['geolat'];
+        $geolong = $_POST['geolong'];
+        
+    if(!empty($nazev) && !empty($mesto) && !empty($geolat) && !empty($geolong) )   {
+    
+        
+        $sql = "INSERT INTO `skola`(`nazev`, `mesto`, `geolat` `geolong`)"
+                               . " VALUES ('$nazev','$mesto','$geolat' '$geolong')" ;
+    $qry = mysqli_query($connect, $sql);
+    if($qry){
+        echo '<script type="text/javascript"> alert("Škola je zapsána") </script>';
+    }   
+        
+    } else {
+        echo '<script type="text/javascript"> alert("Všechny políčka musejí být vyplněné") </script>';
+    }
+     
+    }
+
+?>
+
+ 
 
 
