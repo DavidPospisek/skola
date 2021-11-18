@@ -56,17 +56,6 @@
             <div class="container">
         <div class="jumbotron">
     <center>
-             <h2> Upravení dat Škol </h2>
-         <form action="" method="POST">
-             <input type="text" name="id" placeholder="Zadejte ID školy"/><br/>
-              <input type="text" name="datum" placeholder="Zadejte nový název Školy"/><br/>
-              <input type="text" name="zamestnanec" placeholder="Zadejte nové Město"/><br/>
-              <input type="text" name="popis_zavady" placeholder="Zadejte nové Geo-lat"/><br/>
-              <input type="text" name="vymenene_soucastky" placeholder="Zadejte nové Geo-long"/><br/>
-              <input type="text" name="cas_opravy" placeholder="Zadejte novou dobu opravy"/><br/>
-              
-            <input type="submit" name="update" value="Klikněte pro upravení dat">
-        </form>
     </center>
         </div>
         </div>
