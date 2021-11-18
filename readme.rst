@@ -1,2 +1,3 @@
-Odkaz na web
-http://autoserviss.4fan.cz/
+Odkaz na web:
+http://skolaprojekt.4fan.cz/
+

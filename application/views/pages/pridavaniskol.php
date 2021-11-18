@@ -56,6 +56,7 @@
             <div class="container">
         <div class="jumbotron">
     <center>
+
              <h2> Upravení dat Škol </h2>
          <form action="" method="POST">
              <input type="text" name="id" placeholder="Zadejte ID školy"/><br/>
@@ -65,6 +66,7 @@
               <input type="text" name="geolong" placeholder="Zadejte nové Geo-long"/><br/>  
             <input type="submit" name="update" value="Klikněte pro upravení dat">
         </form>
+
     </center>
         </div>
         </div>
